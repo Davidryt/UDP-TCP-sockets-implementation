@@ -20,6 +20,7 @@ int main(int argc, char *argv[])
 {
 	printf("WELCOME\n");
 	char* host, *mode;
+	mode = "cu";
 	int port = 37;
     //char buf[BUFSIZE+1];
     
@@ -29,10 +30,12 @@ int main(int argc, char *argv[])
 	//signal(SIGINT, sigint_handler);
 
 	/* check command line arguments */
+	/*
 	if(argc > 8 || argc < 5){
 		printf("Número de parámetros incorrecto\n");
 		exit(0);
 	}
+	*/
 
     int opt;
 

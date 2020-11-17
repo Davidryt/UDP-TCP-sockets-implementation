@@ -104,7 +104,7 @@ void serverTCP(short debug,  char * host, int port){
 
 
 			if (!fork()) { //we only one to execute this part by the child
-				close(sockfd)
+				close(sockfd);
 				while(new_fd != -1){
 			 		time_send = htonl((uint32_t) time(NULL)+2208988800);
 					printf("sending time %d\n", time_send);
