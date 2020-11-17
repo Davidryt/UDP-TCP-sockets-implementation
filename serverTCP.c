@@ -103,26 +103,31 @@ void serverTCP(short debug,  char * host, int port){
 		//       hostp->h_name, hostaddrp);
 
 
+			if (!fork()) { //we only one to execute this part by the child
+				close(sockfd)
+				while(new_fd != -1){
+			 		time_send = htonl((uint32_t) time(NULL)+2208988800);
+					printf("sending time %d\n", time_send);
+					ss=send(new_fd,&time_send, sizeof(time_send), 0);
+					if (ss < 0){
+                		fprintf(stderr, "ERROR echo write: %s\n",
+					    strerror(errno));
+                	    exit(1);
+					}
 
-			while(new_fd != -1){
-			 	time_send = htonl((uint32_t) time(NULL)+2208988800);
-				printf("sending time %d\n", time_send);
-				ss=send(new_fd,&time_send, sizeof(time_send), 0);
-				if (ss < 0){
-                	fprintf(stderr, "ERROR echo write: %s\n",
-				    strerror(errno));
-                    exit(1);
+					if (ss = 0){
+                		fprintf(stderr, "ERROR send 0 %s\n",
+						strerror(errno));
+                	    exit(1);
+					}
+
+					printf("sent, sleeping\n");
+					sleep(1);
 				}
-
-				if (ss = 0){
-                	fprintf(stderr, "ERROR send 0 %s\n",
-					strerror(errno));
-                    exit(1);
-				}
-
-				printf("sent, sleeping\n");
-				sleep(1);
+				close(new_fd);
+				exit(0);
 			}
+			
 
 			/* echo the input string back to the client */
 
